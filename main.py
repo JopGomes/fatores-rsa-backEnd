@@ -1,9 +1,12 @@
 
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
+from core.schemas.primo import *
+
+from database.db import BancoDados
 
 
 app = FastAPI(
@@ -21,29 +24,25 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-init =
-
-@app.on_event('startup')
-async def app_startup():
-    init.run()
-
 
 
 @app.get('/')
 async def root():
     return RedirectResponse(url='/docs')
 
-@router.get(
+@app.get(
     path='/primo/{number}',
     response_model=RSAOut,
     description=(
-            '# Get all wallets strategy options \n\n'
+            '# Retorna o RSAOut \n\n'
             ''
-            'This route will return all wallet\'s strategy'
+            ''
     )
 )
-def get_primo(db=Depends(RSADb.get_db) ):
-    primo
+def get_primo(db = BancoDados(), number = int):
+    primo = db.buscarFatores(n=number)
+    if not primo:
+        return  
     return primo
 
 if __name__ == '__main__':
