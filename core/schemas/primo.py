@@ -1,19 +1,19 @@
 from pydantic import BaseModel
 
 class RSABase(BaseModel):
-    RSAname: str | None = None
-
+    fator1: int | None
+    fator2: int | None
+    produto: int | None
 
 class RSACreate(RSABase):
-    RSAname: str
-
-
-class RSAUpdate(RSABase):
-    pass;
-
+    fator1: int 
+    fator2: int 
+    produto: int
 
 class RSAOut(RSABase):
-    id: int
+    fator1: int | None
+    fator2: int | None
+    produto: int | None
     
 
     class Config:
