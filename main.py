@@ -39,12 +39,13 @@ async def root():
             ''
     )
 )
-def get_primo(db = BancoDados(), number = int):
+def get_primo(number = int, db: BancoDados = Depends()):
     primo = db.buscarFatores(n=number)
+
     if not primo:
         output = RSACreate(fator1=-1,fator2=-1,produto=-1)
         return output
-    output = RSACreate(fator1=primo.fator1,fator2=primo.fator2,produto=primo.produto)
+    output = RSACreate(fator1=primo[0],fator2=primo[1],produto=primo[2])
     return output
 
 if __name__ == '__main__':

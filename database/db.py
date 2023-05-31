@@ -32,7 +32,12 @@ class BancoDados:
         resultado = cursor.fetchone()
         if resultado:
             print(resultado)
-            return resultado
+            output = [
+                resultado[0],
+                resultado[1],
+                n
+            ]
+            return output
         else:
             print("Não é fator de dois primos")
             return False
