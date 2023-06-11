@@ -7,8 +7,8 @@ class BancoDados:
         try:
             self.connection = mysql.connector.connect(
                 host="localhost",
-                user="pontes",
-                passwd="abacate123",
+                user="root",
+                passwd="yoko123",
                 database="dbVE2"
             )
             print("MySQL Database connection successful")

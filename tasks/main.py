@@ -8,7 +8,6 @@ banco = BancoDados()
 
 banco.apagarTuplas()
 
-##popular banco
 for i in range(0,len(listaPrimos)):
     for j in range(i+1,len(listaPrimos)):
         banco.inserirNumero(listaPrimos[i],listaPrimos[j])
